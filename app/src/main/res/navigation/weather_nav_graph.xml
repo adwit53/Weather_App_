@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/weather_nav_graph"
+    app:startDestination="@id/weatherSavedFragment">
+
+    <fragment
+        android:id="@+id/weatherSavedFragment"
+        android:name="com.examplek.task_1.fragments.WeatherSavedFragment"
+        android:label="WeatherSavedFragment" >
+        <action
+            android:id="@+id/action_weatherSavedFragment_to_weatherSearchFragment"
+            app:destination="@id/weatherSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherSearchFragment"
+        android:name="com.examplek.task_1.fragments.WeatherSearchFragment"
+        android:label="WeatherSearchFragment" >
+        <action
+            android:id="@+id/action_weatherSearchFragment_to_weatherSavedFragment"
+            app:destination="@id/weatherSavedFragment" />
+    </fragment>
+</navigation>
