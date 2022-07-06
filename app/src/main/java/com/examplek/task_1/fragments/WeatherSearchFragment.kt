@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.navArgs
 import com.examplek.task_1.Api.RetrofitInstance
 import com.examplek.task_1.MainActivity
 import com.examplek.task_1.R
@@ -15,7 +13,6 @@ import com.examplek.task_1.SavingDataType
 import com.examplek.task_1.WeatherViewModel
 import com.examplek.task_1.databinding.SearchWeatherBinding
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.search_weather.*
 import kotlinx.coroutines.*
 import kotlin.math.roundToInt
 
@@ -37,7 +34,7 @@ lateinit var viewModel: WeatherViewModel
         super.onViewCreated(view, savedInstanceState)
         viewModel=(activity as MainActivity).viewModel
         binding.buttontosave.setOnClickListener {
-            viewModel.saveWeatherdetails(SavingDataType(null,_binding?.name?.text.toString(),
+            viewModel.saveWeatherDetails(SavingDataType(null,_binding?.name?.text.toString(),
                 binding?.city?.text.toString(),
                 binding?.country?.text.toString()))
         Snackbar.make(view,"Saved Successfully",Snackbar.LENGTH_SHORT).show()
@@ -54,9 +51,9 @@ lateinit var viewModel: WeatherViewModel
                     if(response.isSuccessful)
                     {
                         var temperature:Double=response.body()!!.main.temp
-                        temperature=temperature-273.15
-                        val roundoff = (temperature * 100.0).roundToInt() / 100.0
-                       binding.temperatureTv.text=roundoff.toString()+" C"
+                        temperature -= 273.15
+                        val round = (temperature * 100.0).roundToInt() / 100.0
+                       binding.temperatureTv.text= "$round C"
                     }
                     else
                     {

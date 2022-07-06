@@ -30,13 +30,13 @@ class Weather_Adapter : RecyclerView.Adapter<Weather_Adapter.WeatherViewHolder>(
         )
     }
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        val weatherdetail=differ.currentList[position]
+        val weatherised=differ.currentList[position]
         holder.itemView.apply {
-            Name_txt.text=weatherdetail.nameOfUser
-            country_txt.text=weatherdetail.countryOfUser
-            city_txt.text=weatherdetail.cityOfUser
+            Name_txt.text=weatherised.nameOfUser
+            country_txt.text=weatherised.countryOfUser
+            city_txt.text=weatherised.cityOfUser
             setOnClickListener{
-                onItemClickListener?.let { it(weatherdetail) }
+                onItemClickListener?.let { it(weatherised) }
             }
         }
     }
